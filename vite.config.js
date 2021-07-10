@@ -10,7 +10,8 @@ export default defineConfig({
   plugins: [
     vue(),
     ViteComponents({
-      directoryAsNamespace: true
+      directoryAsNamespace: true,
+      customComponentResolvers: [console.log]
     }),
     Pages(),
     Layouts()
