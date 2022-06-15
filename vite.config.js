@@ -1,8 +1,8 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
-import { getAliases } from 'vite-aliases'
-import ViteComponents from 'vite-plugin-components'
+import { ViteAliases } from 'vite-aliases'
+import ViteComponents from 'unplugin-vue-components/vite'
 import Pages from 'vite-plugin-pages';
 import Layouts from 'vite-plugin-vue-layouts';
 
@@ -11,15 +11,13 @@ export default defineConfig({
     vue(),
     ViteComponents({
       directoryAsNamespace: true,
-      customComponentResolvers: [console.log]
+      resolvers: [console.log]
     }),
     Pages(),
-    Layouts()
+    Layouts(),
+    ViteAliases()
   ],
-  resolve: {
-    alias: getAliases()
-  },
   server: {
-    port: 80
+    port: 8080
   }
 })
